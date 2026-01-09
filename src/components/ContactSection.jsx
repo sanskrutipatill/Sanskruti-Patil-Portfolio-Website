@@ -1,16 +1,15 @@
 import {
-  Instagram,
+  Github,
   Linkedin,
   Mail,
   MapPin,
   Phone,
   Send,
-  Twitch,
-  Twitter,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export const ContactSection = () => {
   const { toast } = useToast();
@@ -18,163 +17,191 @@ export const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
-      });
-      setIsSubmitting(false);
-    }, 1500);
+    emailjs
+      .sendForm(
+        "service_426rcfu",        // ✅ Service ID
+        "template_isabvcx",       // ✅ Template ID
+        e.target,
+        "p4vVxYv4z3GhIyfuE"        // ✅ Public Key
+      )
+      .then(
+        () => {
+          toast({
+            title: "Message sent! ✅",
+            description: "Thank you for reaching out. I'll contact you soon.",
+          });
+          e.target.reset();
+          setIsSubmitting(false);
+        },
+        (error) => {
+          console.error(error);
+          toast({
+            title: "Failed to send ❌",
+            description: "Something went wrong. Please try again.",
+          });
+          setIsSubmitting(false);
+        }
+      );
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary"> Touch</span>
+    <section id="contact" className="py-24 px-4 relative overflow-hidden">
+      {/* Playful Background Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse-subtle pointer-events-none" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-float pointer-events-none" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center text-glow">
+          Get In <span className="text-primary">Touch</span>
         </h2>
 
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto text-lg">
           I’m always excited to explore new opportunities, collaborate on impactful projects,
           and contribute to innovative ideas—feel free to reach out anytime.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Left Side – Contact Info */}
-          <div className="space-y-8 text-center">
-            <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
 
-            <div className="space-y-6">
-              {/* Email */}
-              <div className="flex flex-col items-center space-y-2">
-                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Mail className="h-6 w-6 text-primary" />
+          {/* LEFT: Structured Contact Info & Socials */}
+          <div className="flex flex-col h-full">
+            <div className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-xl hover:shadow-primary/20 transition-all duration-300 flex-grow flex flex-col justify-between h-full">
+
+              <div className="space-y-8">
+                <h3 className="text-2xl font-semibold mb-8 text-primary">Contact Information</h3>
+
+                <div className="grid gap-6">
+                  {/* Header Row */}
+                  <div className="grid grid-cols-[auto_1fr] gap-4 items-center pb-4 border-b border-border/50 text-sm font-medium text-muted-foreground uppercase tracking-wider">
+                    <span className="w-12 text-center"></span>
+                    <span></span>
+                  </div>
+
+                  {/* Email Row */}
+                  <div className="group grid grid-cols-[auto_1fr] gap-4 items-center p-3 rounded-lg hover:bg-primary/5 transition-colors">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <Mail className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                    </div>
+                    <a href="mailto:sanskrutip0205@gmail.com" className="text-lg text-foreground hover:text-primary transition-colors break-all">
+                      sanskrutip0205@gmail.com
+                    </a>
+                  </div>
+
+                  {/* Phone Row */}
+                  <div className="group grid grid-cols-[auto_1fr] gap-4 items-center p-3 rounded-lg hover:bg-primary/5 transition-colors">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <Phone className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                    </div>
+                    <a href="tel:+917020834329" className="text-lg text-foreground hover:text-primary transition-colors">
+                      +91 7020834329
+                    </a>
+                  </div>
+
+                  {/* Location Row */}
+                  <div className="group grid grid-cols-[auto_1fr] gap-4 items-center p-3 rounded-lg hover:bg-primary/5 transition-colors">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <MapPin className="h-5 w-5 text-primary group-hover:scale-110 transition-transform" />
+                    </div>
+                    <p className="text-lg text-foreground">
+                      Aurangabad, Maharashtra, India
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-medium">Email</h4>
+              </div>
+
+              {/* Socials Section Internal */}
+              <div className="pt-8 mt-8 border-t border-border/30">
+                <h4 className="font-semibold mb-6 text-xl">Connect With Me</h4>
+                <div className="flex gap-6">
                   <a
-                    href="mailto:sanskrutip0205@gmail.com"
-                    className="text-muted-foreground hover:text-primary transition-colors"
+                    href="https://www.linkedin.com/in/sanskruti-patil-4a79342a0"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-blue-600/10 transition-all duration-300 hover:-translate-y-1"
                   >
-                    sanskrutip0205@gmail.com
+                    <div className="p-3 bg-card rounded-full shadow-sm group-hover:shadow-blue-500/50 transition-shadow">
+                      <Linkedin className="h-6 w-6 text-foreground group-hover:text-blue-600 transition-colors" />
+                    </div>
+                    <span className="text-sm font-medium">LinkedIn</span>
+                  </a>
+
+                  <a
+                    href="https://github.com/sanskrutipatill"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col items-center gap-2 p-4 rounded-xl hover:bg-purple-600/10 transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="p-3 bg-card rounded-full shadow-sm group-hover:shadow-purple-500/50 transition-shadow">
+                      <Github className="h-6 w-6 text-foreground group-hover:text-purple-600 transition-colors" />
+                    </div>
+                    <span className="text-sm font-medium">GitHub</span>
                   </a>
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="flex flex-col items-center space-y-2">
-                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium">Phone</h4>
-                  <a
-                    href="tel:+917020834329"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    +91 7020834329
-                  </a>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex flex-col items-center space-y-2">
-                <div className="p-3 rounded-full bg-primary/10 flex items-center justify-center">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-medium">Location</h4>
-                  <p className="text-muted-foreground">
-                    Aurangabad, Maharashtra, INDIA
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Socials */}
-            <div className="pt-8">
-              <h4 className="font-medium mb-4">Connect With Me</h4>
-              <div className="flex justify-center space-x-6">
-                <a href="#" target="_blank" className="hover:text-primary">
-                  <Linkedin />
-                </a>
-                <a href="#" target="_blank" className="hover:text-primary">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank" className="hover:text-primary">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank" className="hover:text-primary">
-                  <Twitch />
-                </a>
-              </div>
             </div>
           </div>
 
-          {/* Right Side – Contact Form */}
-          <div className="bg-card p-8 rounded-lg shadow-xs">
-            <h3 className="text-2xl font-semibold mb-6">Send a Message</h3>
+          {/* RIGHT: Form */}
+          <div className="flex flex-col h-full">
+            <div className="bg-card/80 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl relative h-full flex flex-col justify-center">
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-primary/20 rounded-full blur-2xl animate-pulse pointer-events-none" />
 
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Your Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder="Sanskruti Patil..."
-                />
-              </div>
+              <h3 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
+                Send a Message
+              </h3>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Your Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary"
-                  placeholder="sanskruti@gmail.com"
-                />
-              </div>
+              <form className="space-y-6 flex-grow flex flex-col justify-between" onSubmit={handleSubmit}>
+                <div className="space-y-6">
+                  <div className="group space-y-2">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      required
+                      className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 placeholder:text-muted-foreground/60 shadow-xs"
+                    />
+                  </div>
 
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Your Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  className="w-full px-4 py-3 rounded-md border border-input bg-background focus:outline-hidden focus:ring-2 focus:ring-primary resize-none"
-                  placeholder="Hello, I'd like to talk about..."
-                />
-              </div>
+                  <div className="group space-y-2">
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Your Email"
+                      required
+                      className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 placeholder:text-muted-foreground/60 shadow-xs"
+                    />
+                  </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={cn("cosmic-button w-full flex items-center justify-center gap-2")}
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                <Send size={16} />
-              </button>
-            </form>
+                  <div className="group space-y-2">
+                    <textarea
+                      name="message"
+                      placeholder="Tell me about your project..."
+                      required
+                      rows={5}
+                      className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 focus:bg-background focus:ring-2 focus:ring-primary/50 outline-none transition-all duration-300 placeholder:text-muted-foreground/60 resize-none shadow-xs"
+                    />
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={cn(
+                    "w-full py-4 mt-6 rounded-xl bg-primary text-primary-foreground font-bold text-lg",
+                    "flex items-center justify-center gap-2",
+                    "transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98]",
+                    "disabled:opacity-70 disabled:cursor-not-allowed"
+                  )}
+                >
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  <Send className={cn("w-5 h-5", isSubmitting ? "animate-pulse" : "group-hover:translate-x-1 transition-transform")} />
+                </button>
+              </form>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
