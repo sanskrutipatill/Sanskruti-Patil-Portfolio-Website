@@ -3,9 +3,9 @@ const InternshipSection = () => {
     {
       title: "UI/UX Intern",
       company: "FirstBuy.com",
-      duration: "July 2024 - Jan 2025",
+      duration: "July 2025 - Jan 2026",
       desc: "Working on user interface design, refining layouts, enhancing usability, and improving the overall user experience across web pages.",
-      link: "https://first-buy.com/",
+      link: "https://internship-lor-sanskruti-patil.tiiny.site",
     },
     {
       title: "GenAI Virtual Internship",
