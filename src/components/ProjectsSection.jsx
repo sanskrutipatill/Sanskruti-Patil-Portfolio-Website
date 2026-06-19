@@ -2,7 +2,43 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    id: 1,
+  id: 1,
+  title: "AI-Powered KYC Verification System",
+  description: "An intelligent KYC verification platform that automates identity validation using OCR, face matching, liveness detection, deepfake detection, and AI-driven risk scoring to enhance security and prevent fraud.",
+  image: "/projects/project_kyc.png",
+  tags: ["Python", "AI/ML", "Computer Vision"],
+  demoUrl: "#",
+  githubUrl: "https://github.com/sanskrutipatill/AI-KYC-Verification-System",
+},
+{
+  id: 2,
+  title: "AI Image Classification System",
+  description: "A deep learning-powered image classification platform that uses trained neural network models to automatically identify and categorize images through a modern React-based web interface.",
+  image: "/projects/project_img.png",
+  tags: ["Deep Learning", "Python", "React"],
+  demoUrl: "https://deep-learning-image-classifier.vercel.app",
+  githubUrl: "https://github.com/sanskrutipatill/Deep-Learning-image-classifier",
+},
+{
+  id: 3,
+  title: "Expense Tracker System",
+  description: "A web-based expense management application built with JSP, Servlets, JDBC, and MySQL that helps users track income, expenses, financial records, and spending patterns through an intuitive dashboard.",
+  image: "/projects/project_expense.png",
+  tags: ["Java", "JSP", "MySQL"],
+  demoUrl: "#",
+  githubUrl: "https://github.com/sanskrutipatill/Expense-Tracker-Jsp-Servlet",
+},
+{
+  id: 4,
+  title: "TravelBuddy - Travel Booking Platform",
+  description: "A full-stack MERN travel booking platform inspired by MakeMyTrip, enabling users to book flights, trains, tours, and travel packages with secure authentication, payment integration, and AI-powered travel assistance.",
+  image: "/projects/project_travelbuddy.png",
+  tags: ["React", "Node.js", "MongoDB"],
+  demoUrl: "https://travelbuddy-travel-booking-platform.vercel.app",
+  githubUrl: "https://github.com/sanskrutipatill/Travelbuddy-Travel-Booking-Platform",
+},
+  {
+    id: 5,
     title: "AgriChain Platform",
     description: "A blockchain-based agricultural supply chain platform enabling transparent tracking, fair pricing, secure transactions, and verified produce quality from farm to consumer.",
     image: "/projects/project1.png",
@@ -11,7 +47,16 @@ const projects = [
     githubUrl: "https://github.com/sanskrutipatill/STOP2GO-AGRICHAIN",
   },
   {
-    id: 2,
+  id: 6,
+  title: "Centralized Digital Healthcare Platform",
+  description: "A comprehensive healthcare management platform that streamlines patient records, appointment scheduling, healthcare services, and secure medical data access through a centralized digital ecosystem.",
+  image: "/projects/project_medicare.png",
+  tags: ["React", "Healthcare", "Full Stack"],
+  demoUrl: "https://centralized-digital-healthcare-platform.vercel.app",
+  githubUrl: "https://github.com/sanskrutipatill/Centralized-Digital-Healthcare-Platform",
+},
+  {
+    id: 7,
     title: "Inventory Management",
     description:
       "Interactive analyticsA Java-based desktop application for managing inventory, billing, sales, and customers with a clean and user-friendly interface. dashboard with data visualization and filtering capabilities.",
@@ -21,7 +66,7 @@ const projects = [
     githubUrl: "https://github.com/sanskrutipatill/Inventory-Management-System",
   },
   {
-    id: 3,
+    id: 8,
     title: "HealthOvia System",
     description:
       "A healthcare-focused web platform offering appointment booking, health tracking tools, and informative medical content with a patient-centered design.",
@@ -31,7 +76,7 @@ const projects = [
     githubUrl: "https://github.com/sanskrutipatill/HealthOvia-Platform",
   },
   {
-  id: 4,
+  id: 9,
   title: "Python Chess Game",
   description:
     "A Python-based chess game featuring a graphical interface, complete chess rules, sound effects, multiple board themes, and smooth gameplay.",
@@ -41,7 +86,7 @@ const projects = [
   githubUrl: "https://github.com/sanskrutipatill/Python-Chess-Game",
   },
   {
-  id: 5,
+  id: 10,
   title: "Blood Bank Management",
   description:
     "A Python-based blood bank management system for handling donor records, blood inventory, and requests using a clean and user-friendly graphical interface.",
@@ -51,7 +96,7 @@ const projects = [
   githubUrl: "https://github.com/sanskrutipatill/Blood-Bank-Management",
  },
  {
-  id: 6,
+  id: 11,
   title: "TradeHub – Financial Literacy Platform",
   description:
     "A financial literacy web platform designed to help users understand money management, investing, and budgeting through simple and user-friendly content.",
@@ -59,8 +104,16 @@ const projects = [
   tags: ["Web Dev", "Finance", "Frontend"],
   demoUrl: "#",
   githubUrl: "https://github.com/sanskrutipatill/TradeHub",
+},
+{
+  id: 12,
+  title: "Railway Ticket Booking System",
+  description: "A C++ console-based railway reservation system that enables user registration, login, train schedule management, ticket booking, booking history tracking, and ticket cancellation with file-based data storage.",
+  image: "/projects/project12.png",
+  tags: ["C++", "File Handling", "Data Structures"],
+  demoUrl: "#",
+  githubUrl: "https://github.com/sanskrutipatill/Railway-Ticket-Booking-System",
 }
-
 ];
 
 export const ProjectsSection = () => {
