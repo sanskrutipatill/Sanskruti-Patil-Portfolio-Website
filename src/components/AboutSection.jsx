@@ -30,7 +30,7 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="/Sanskruti_Patil_Resume.pdf"
+                href="/Sanskruti_Patil_CV_Software Engineer.pdf"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
