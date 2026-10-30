@@ -1,6 +1,13 @@
 const InternshipSection = () => {
   const internships = [
     {
+      title: "Engineering Intern",
+      company: "Crafizio Private Limited",
+      duration: "Aug 2026 - Dec 2026",
+      desc: "Working on software engineering tasks, contributing to application development, technical implementation, and project-related activities.",
+      link: "https://drive.google.com/file/d/1l0jWD8yHMfSWKBcAAKXpo98Cxlbg8rug/view?usp=sharing",
+    },
+    {
       title: "UI/UX Intern",
       company: "FirstBuy.com",
       duration: "July 2025 - Jan 2026",
@@ -12,7 +19,7 @@ const InternshipSection = () => {
       company: "Google",
       duration: "Sept 2024 - Oct 2024",
       desc: "Training in Generative AI, NLP, and applied AI solutions, with hands-on projects and practical applications.",
-      link: "https://skillwallet.smartinternz.com/certificate/virtual-internship/5e93e97910814feb7ea0902bad6182fb",
+      link: "https://drive.google.com/file/d/1zYavw4pMteN3LRktkszlO6kwY01dh0SX/view?usp=sharing",
     },
     {
       title: "Generative AI & Prompt Engineering",
